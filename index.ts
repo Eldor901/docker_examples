@@ -3,7 +3,10 @@ import redis from "redis";
 
 const app = express();
 
-const client = redis.createClient();
+const client = redis.createClient({
+  host: "redis-server",
+  port: 6379,
+});
 
 client.set("visits", "0");
 
@@ -14,6 +17,6 @@ app.get("/", (_, res) => {
   });
 });
 
-app.listen(3001, () => {
-  console.log("listing port 3001");
+app.listen(4001, () => {
+  console.log("listing port 4001");
 });
